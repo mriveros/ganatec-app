@@ -7,8 +7,8 @@ class SQLite(context: Context?, dbH: String?, factory: SQLiteDatabase.CursorFact
     override fun onCreate(db: SQLiteDatabase?) {
         //tabla COLOR
         db?.execSQL("""
-            CREATE TABLE color (
-                id_color_vaca INTEGER PRIMARY KEY AUTOINCREMENT, 
+            CREATE TABLE raza (
+                id_raza_vaca INTEGER PRIMARY KEY AUTOINCREMENT, 
                 descripcion VARCHAR(30)
             )
         """)
@@ -34,7 +34,7 @@ class SQLite(context: Context?, dbH: String?, factory: SQLiteDatabase.CursorFact
                 sincronizado INTEGER,
                 id_sexo INTEGER,
                 peso integer,
-                FOREIGN KEY (id_color_vaca) REFERENCES color(id_color_vaca),
+                FOREIGN KEY (id_raza_vaca) REFERENCES color(id_raza_vaca),
                 FOREIGN KEY (id_ubicacion) REFERENCES ubicacion(id_ubicacion)                
             )
         """)

@@ -40,6 +40,7 @@ class DetalleVaca : AppCompatActivity() {
         val ubicacionVaca = findViewById<TextView>(R.id.SnnUbicacion)
         val colorVaca = findViewById<TextView>(R.id.SnnColor)
         val sexoVaca = findViewById<TextView>(R.id.SnnSexo)
+        val pesoVaca = findViewById<TextView>(R.id.SnnPeso)
 
         val vaca = ListaDeVacas.vacas!![intent.getIntExtra("position", 0)]
         if (vaca != null) {
@@ -47,8 +48,9 @@ class DetalleVaca : AppCompatActivity() {
             caravanaVaca.text = "Caravana: " + vaca.caravana
             nacimientoVaca.text = "Fecha Nacimiento: " + vaca.fecha_nac
             ubicacionVaca.text = "Ubicación: " + ColoresUbicaciones.ubicaciones[vaca.id_ubicacion!!]
-            colorVaca.text = "Color: " + ColoresUbicaciones.colores[vaca.id_raza_vaca!!]
+            colorVaca.text = "Raza: " + ColoresUbicaciones.colores[vaca.id_raza_vaca!!]
             sexoVaca.text = "Sexo: " + ColoresUbicaciones.sexos[vaca.id_sexo!!]
+            pesoVaca.text = "Peso: " + vaca.peso
         }
 
         val btnEliminarVaca = findViewById<Button>(R.id.btnEliminarVaca)

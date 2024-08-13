@@ -12,6 +12,8 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.asistenciadevacas.ListaDeVacasAsistidas.Companion.nuevasVacas
+import com.example.asistenciadevacas.ListaDeVacasAsistidas.Companion.nuevoVacaAdapter
 
 class ListaDeVacas : AppCompatActivity() {
 
@@ -23,6 +25,7 @@ class ListaDeVacas : AppCompatActivity() {
         var isLastPage = false
         var currentPage = 0
         const val pageSize = 10 // Número de vacas por página
+        val REQUEST_CODE_ADD_VACA = 1
     }
 
     @SuppressLint("SourceLockedOrientationActivity")
@@ -77,7 +80,8 @@ class ListaDeVacas : AppCompatActivity() {
         val btnAniadirVaca = findViewById<Button>(R.id.btnAniadirVaca)
         btnAniadirVaca.setOnClickListener {
             val intent = Intent(this, AniadirVaca::class.java)
-            startActivity(intent)
+            //startActivity(intent)
+            startActivityForResult(intent, REQUEST_CODE_ADD_VACA)
         }
     }
 

@@ -34,6 +34,7 @@ class AniadirVaca : AppCompatActivity() {
 
         val txtNombreVaca = findViewById<EditText>(R.id.txtNombreVaca)
         val txtNroCaravana = findViewById<EditText>(R.id.txtNroCaravana)
+        val txtPeso = findViewById<EditText>(R.id.txtPeso)
 
         /*INICIO PARA FECHAS*/
         val txtFechaNacimiento = findViewById<EditText>(R.id.txtFechaNacimiento)
@@ -97,6 +98,7 @@ class AniadirVaca : AppCompatActivity() {
                 vaca.id_raza_vaca?.let { SnnColor.setSelection(it) }
                 vaca.id_ubicacion?.let { SnnUbicacion.setSelection(it) }
                 vaca.id_sexo?.let { SnnSexo.setSelection(it) }
+                txtPeso.setText(vaca.peso.toString())
             }
 
             btnGuardar.setOnClickListener{
@@ -108,6 +110,7 @@ class AniadirVaca : AppCompatActivity() {
                         vaca.nombre_vaca = txtNombreVaca.text.toString()
                         vaca.fecha_nac = txtFechaNacimiento.text.toString()
                         vaca.caravana = txtNroCaravana.text.toString()
+                        vaca.peso = txtPeso.text.toString().toIntOrNull()
                         conexion.editarVaca(vaca)
                         //hay que hacer una funcion de esto
                         ListaDeVacas.vacas!![vaca.position] = vaca
@@ -128,6 +131,7 @@ class AniadirVaca : AppCompatActivity() {
                 txtNombreVaca.setText("")
                 txtFechaNacimiento.setText("")
                 txtNroCaravana.setText("")
+                txtPeso.setText("")
                 SnnColor.setSelection(0)
                 SnnUbicacion.setSelection(0)
                 finish()
@@ -137,20 +141,23 @@ class AniadirVaca : AppCompatActivity() {
                 if (txtNombreVaca.text.toString().trim() != ""){
                     //llamar a la conexion db
                     val vacaNueva = VacaModel(SnnColor.selectedItemPosition, SnnUbicacion.selectedItemPosition,
-                        txtNombreVaca.text.toString(), txtFechaNacimiento.text.toString(), txtNroCaravana.text.toString(),1,0,SnnSexo.selectedItemPosition,0 )
+                        txtNombreVaca.text.toString(), txtFechaNacimiento.text.toString(), txtNroCaravana.text.toString(),1,0,SnnSexo.selectedItemPosition,txtPeso.text.toString().toIntOrNull() ?: 0 )
                     //guardar y limpiar campo (luego hacer metodo)
                     val idVaca = conexion.guardarVaca(vacaNueva)
                     vacaNueva.id_vaca = idVaca!!.toInt()
                     txtNombreVaca.setText("")
                     txtFechaNacimiento.setText("")
                     txtNroCaravana.setText("")
+                    txtPeso.setText("")
                     SnnColor.setSelection(0)
                     SnnUbicacion.setSelection(0)
                     SnnSexo.setSelection(0)
                     ListaDeVacas.vacas!!.add(vacaNueva)
+                    ListaDeVacas.vacasFiltradas!!.add(vacaNueva)
                     ListaDeVacas.vacaAdapter!!.notifyItemInserted(ListaDeVacas.vacas!!.lastIndex)
                     ListaDeVacas.vacaAdapter!!.ordenarPosiciones()
 
+                    setResult(RESULT_OK)
                     // Vuelve a la ventana anterior
                     finish()
                 }else{
@@ -158,7 +165,10 @@ class AniadirVaca : AppCompatActivity() {
                 }
             }
         }
+
     }
+
+
 
 
     fun mostrarDialogoError() {

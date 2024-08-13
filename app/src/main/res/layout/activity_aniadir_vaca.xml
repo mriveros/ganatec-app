@@ -72,6 +72,21 @@
                     android:textSize="25sp"
                     android:textStyle="bold"
                     tools:ignore="RtlSymmetry"/>
+            <EditText
+                    android:id="@+id/txtPeso"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="30dp"
+                    android:background="@drawable/border_button_sin_color"
+                    android:ems="10"
+                    android:hint="@string/n_peso"
+                    android:inputType="textPersonName"
+                    android:paddingStart="15dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

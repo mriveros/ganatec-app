@@ -13,7 +13,7 @@ class ConexionDB {
         var db = conexion.writableDatabase
 
         val values = ContentValues().apply {
-            put("id_color_vaca", vaca.id_raza_vaca)
+            put("id_raza_vaca", vaca.id_raza_vaca)
             put("id_ubicacion", vaca.id_ubicacion)
             put("nombre_vaca", vaca.nombre_vaca)
             put("fecha_nac", vaca.fecha_nac)
@@ -32,7 +32,7 @@ class ConexionDB {
         var db = conexion.writableDatabase
         val selection = "id_vaca = " + vaca.id_vaca.toString()
         val values = ContentValues().apply {
-            put("id_color_vaca", vaca.id_raza_vaca)
+            put("id_raza_vaca", vaca.id_raza_vaca)
             put("id_ubicacion", vaca.id_ubicacion)
             put("nombre_vaca", vaca.nombre_vaca)
             put("fecha_nac", vaca.fecha_nac)
@@ -63,7 +63,7 @@ class ConexionDB {
         val vacas = mutableListOf<VacaModel>()
         while (cursor.moveToNext()) {
             val id = cursor.getInt(cursor.getColumnIndexOrThrow("id_vaca"))
-            val id_color = cursor.getInt(cursor.getColumnIndexOrThrow("id_color_vaca"))
+            val id_raza = cursor.getInt(cursor.getColumnIndexOrThrow("id_raza_vaca"))
             val id_ubicacion = cursor.getInt(cursor.getColumnIndexOrThrow("id_ubicacion"))
             val nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre_vaca"))
             val nacimiento = cursor.getString(cursor.getColumnIndexOrThrow("fecha_nac"))
@@ -73,7 +73,7 @@ class ConexionDB {
             val id_sexo = cursor.getInt(cursor.getColumnIndexOrThrow("id_sexo"))
             val peso = cursor.getInt(cursor.getColumnIndexOrThrow("peso"))
 
-            vacas.add(VacaModel(id,id_color, id_ubicacion, nombre, nacimiento, caravana, activo,sincronizado,id_sexo, peso))
+            vacas.add(VacaModel(id,id_raza, id_ubicacion, nombre, nacimiento, caravana, activo,sincronizado,id_sexo, peso))
         }
         cursor.close()
         return vacas
@@ -90,9 +90,7 @@ class ConexionDB {
         var db = conexion.writableDatabase
         val selection = "id_vaca = " + vaca.id_vaca.toString()
         val values = ContentValues().apply {
-
             put("activo", 0)
-
         }
         println(db.update("vaca", values, selection, null))
 
@@ -152,6 +150,7 @@ class ConexionDB {
                 val peso = cursor.getInt(cursor.getColumnIndexOrThrow("peso"))
 
                 vacas.add(VacaModel(id,id_raza, id_ubicacion, nombre, nacimiento, caravana, activo,sincronizado,id_sexo,peso))
+
             } while (cursor.moveToNext())
         }
         cursor.close()
