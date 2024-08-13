@@ -47,7 +47,7 @@ class DetalleVaca : AppCompatActivity() {
             caravanaVaca.text = "Caravana: " + vaca.caravana
             nacimientoVaca.text = "Fecha Nacimiento: " + vaca.fecha_nac
             ubicacionVaca.text = "Ubicación: " + ColoresUbicaciones.ubicaciones[vaca.id_ubicacion!!]
-            colorVaca.text = "Color: " + ColoresUbicaciones.colores[vaca.id_color_vaca!!]
+            colorVaca.text = "Color: " + ColoresUbicaciones.colores[vaca.id_raza_vaca!!]
             sexoVaca.text = "Sexo: " + ColoresUbicaciones.sexos[vaca.id_sexo!!]
         }
 

@@ -23,7 +23,7 @@ class SQLite(context: Context?, dbH: String?, factory: SQLiteDatabase.CursorFact
         db?.execSQL("""
             CREATE TABLE vaca ( 
                 id_vaca INTEGER PRIMARY KEY AUTOINCREMENT, 
-                id_color_vaca INTEGER, 
+                id_raza_vaca INTEGER, 
                 id_ubicacion INTEGER, 
                 nombre_vaca TEXT, 
                 fecha_nac TEXT, 
@@ -33,6 +33,7 @@ class SQLite(context: Context?, dbH: String?, factory: SQLiteDatabase.CursorFact
                 activo INTEGER,
                 sincronizado INTEGER,
                 id_sexo INTEGER,
+                peso integer,
                 FOREIGN KEY (id_color_vaca) REFERENCES color(id_color_vaca),
                 FOREIGN KEY (id_ubicacion) REFERENCES ubicacion(id_ubicacion)                
             )

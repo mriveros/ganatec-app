@@ -1,0 +1,6 @@
+#archivo para ignorar archivos de .git
+.gradle/
+/.gradle/*
+
+.idea/
+/.idea/*

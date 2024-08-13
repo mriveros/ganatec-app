@@ -6,7 +6,7 @@ import java.sql.Blob
 
 class VacaModel() : Parcelable {
     var id_vaca: Int? = null
-    var id_color_vaca: Int? = null
+    var id_raza_vaca: Int? = null
     var id_ubicacion: Int? = null
     var nombre_vaca: String? = null
     var fecha_nac: String? = null
@@ -17,10 +17,11 @@ class VacaModel() : Parcelable {
     var activo: Int? = null
     var sincronizado: Int? = null
     var id_sexo: Int? = null
+    var peso: Int? = null
 
     constructor(parcel: Parcel) : this() {
         id_vaca = parcel.readValue(Int::class.java.classLoader) as? Int
-        id_color_vaca = parcel.readInt()
+        id_raza_vaca = parcel.readInt()
         id_ubicacion = parcel.readInt()
         nombre_vaca = parcel.readString()
         fecha_nac = parcel.readString()
@@ -29,12 +30,13 @@ class VacaModel() : Parcelable {
         activo = parcel.readInt()
         sincronizado = parcel.readInt()
         id_sexo = parcel.readInt()
+        peso = parcel.readInt()
 
     }
 
-    constructor(id_vaca: Int?,id_color_vaca: Int, id_ubicacion: Int, nombre_vaca: String, fecha_nac: String, caravana: String, activo: Int, sincronizado: Int, id_sexo: Int ) : this() {
+    constructor(id_vaca: Int?,id_raza_vaca: Int, id_ubicacion: Int, nombre_vaca: String, fecha_nac: String, caravana: String, activo: Int, sincronizado: Int, id_sexo: Int, peso: Int ) : this() {
         this.id_vaca = id_vaca
-        this.id_color_vaca=id_color_vaca
+        this.id_raza_vaca=id_raza_vaca
         this.id_ubicacion=id_ubicacion
         this.nombre_vaca=nombre_vaca
         this.fecha_nac=fecha_nac
@@ -42,11 +44,12 @@ class VacaModel() : Parcelable {
         this.activo= activo
         this.sincronizado= sincronizado
         this.id_sexo= id_sexo
+        this.peso= peso
 
     }
 
-    constructor(id_color_vaca: Int, id_ubicacion: Int, nombre_vaca: String, fecha_nac: String, caravana: String,  activo: Int, sincronizado: Int, id_sexo: Int) : this() {
-        this.id_color_vaca=id_color_vaca
+    constructor(id_raza_vaca: Int, id_ubicacion: Int, nombre_vaca: String, fecha_nac: String, caravana: String,  activo: Int, sincronizado: Int, id_sexo: Int, peso: Int) : this() {
+        this.id_raza_vaca=id_raza_vaca
         this.id_ubicacion=id_ubicacion
         this.nombre_vaca=nombre_vaca
         this.fecha_nac=fecha_nac
@@ -54,12 +57,13 @@ class VacaModel() : Parcelable {
         this.activo= activo
         this.sincronizado= sincronizado
         this.id_sexo= id_sexo
+        this.peso = peso
 
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(id_vaca)
-        id_color_vaca?.let { parcel.writeInt(it) }
+        id_raza_vaca?.let { parcel.writeInt(it) }
         id_ubicacion?.let { parcel.writeInt(it) }
         parcel.writeString(nombre_vaca)
         parcel.writeString(fecha_nac)
@@ -68,6 +72,7 @@ class VacaModel() : Parcelable {
         parcel.writeValue(activo)
         parcel.writeValue(sincronizado)
         id_sexo?.let { parcel.writeInt(it) }
+        parcel.writeValue(peso)
     }
 
     override fun describeContents(): Int {

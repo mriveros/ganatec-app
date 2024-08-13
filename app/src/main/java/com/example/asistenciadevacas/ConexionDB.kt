@@ -13,7 +13,7 @@ class ConexionDB {
         var db = conexion.writableDatabase
 
         val values = ContentValues().apply {
-            put("id_color_vaca", vaca.id_color_vaca)
+            put("id_color_vaca", vaca.id_raza_vaca)
             put("id_ubicacion", vaca.id_ubicacion)
             put("nombre_vaca", vaca.nombre_vaca)
             put("fecha_nac", vaca.fecha_nac)
@@ -22,6 +22,7 @@ class ConexionDB {
             put("activo", vaca.activo)
             put("sincronizado", vaca.sincronizado)
             put("id_sexo", vaca.id_sexo)
+            put("peso", vaca.peso)
         }
         return db?.insert("vaca", "foto", values)
 
@@ -31,7 +32,7 @@ class ConexionDB {
         var db = conexion.writableDatabase
         val selection = "id_vaca = " + vaca.id_vaca.toString()
         val values = ContentValues().apply {
-            put("id_color_vaca", vaca.id_color_vaca)
+            put("id_color_vaca", vaca.id_raza_vaca)
             put("id_ubicacion", vaca.id_ubicacion)
             put("nombre_vaca", vaca.nombre_vaca)
             put("fecha_nac", vaca.fecha_nac)
@@ -41,6 +42,7 @@ class ConexionDB {
             put("activo", vaca.activo)
             put("sincronizado", vaca.sincronizado)
             put("id_sexo", vaca.id_sexo)
+            put("peso", vaca.peso)
         }
         println(db.update("vaca", values, selection, null))
     }
@@ -69,8 +71,9 @@ class ConexionDB {
             val activo = cursor.getInt(cursor.getColumnIndexOrThrow("activo"))
             val sincronizado = cursor.getInt(cursor.getColumnIndexOrThrow("sincronizado"))
             val id_sexo = cursor.getInt(cursor.getColumnIndexOrThrow("id_sexo"))
+            val peso = cursor.getInt(cursor.getColumnIndexOrThrow("peso"))
 
-            vacas.add(VacaModel(id,id_color, id_ubicacion, nombre, nacimiento, caravana, activo,sincronizado,id_sexo))
+            vacas.add(VacaModel(id,id_color, id_ubicacion, nombre, nacimiento, caravana, activo,sincronizado,id_sexo, peso))
         }
         cursor.close()
         return vacas
@@ -138,7 +141,7 @@ class ConexionDB {
             do {
                 // Obtener datos de cursor y añadir a la lista de vacas
                 val id = cursor.getInt(cursor.getColumnIndexOrThrow("id_vaca"))
-                val id_color = cursor.getInt(cursor.getColumnIndexOrThrow("id_color_vaca"))
+                val id_raza = cursor.getInt(cursor.getColumnIndexOrThrow("id_raza_vaca"))
                 val id_ubicacion = cursor.getInt(cursor.getColumnIndexOrThrow("id_ubicacion"))
                 val nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre_vaca"))
                 val nacimiento = cursor.getString(cursor.getColumnIndexOrThrow("fecha_nac"))
@@ -146,8 +149,9 @@ class ConexionDB {
                 val activo = cursor.getInt(cursor.getColumnIndexOrThrow("activo"))
                 val sincronizado = cursor.getInt(cursor.getColumnIndexOrThrow("sincronizado"))
                 val id_sexo = cursor.getInt(cursor.getColumnIndexOrThrow("id_sexo"))
+                val peso = cursor.getInt(cursor.getColumnIndexOrThrow("peso"))
 
-                vacas.add(VacaModel(id,id_color, id_ubicacion, nombre, nacimiento, caravana, activo,sincronizado,id_sexo))
+                vacas.add(VacaModel(id,id_raza, id_ubicacion, nombre, nacimiento, caravana, activo,sincronizado,id_sexo,peso))
             } while (cursor.moveToNext())
         }
         cursor.close()
