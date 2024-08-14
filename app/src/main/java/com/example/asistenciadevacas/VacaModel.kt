@@ -17,7 +17,7 @@ class VacaModel() : Parcelable {
     var activo: Int? = null
     var sincronizado: Int? = null
     var id_sexo: Int? = null
-    var peso: Int? = null
+    var peso: String? = null
 
     constructor(parcel: Parcel) : this() {
         id_vaca = parcel.readValue(Int::class.java.classLoader) as? Int
@@ -27,14 +27,12 @@ class VacaModel() : Parcelable {
         fecha_nac = parcel.readString()
         caravana = parcel.readString()
         position = parcel.readInt()
-        activo = parcel.readInt()
-        sincronizado = parcel.readInt()
         id_sexo = parcel.readInt()
-        peso = parcel.readInt()
-
+        peso = parcel.readString()
+        peso = parcel.readString()
     }
 
-    constructor(id_vaca: Int?,id_raza_vaca: Int, id_ubicacion: Int, nombre_vaca: String, fecha_nac: String, caravana: String, activo: Int, sincronizado: Int, id_sexo: Int, peso: Int ) : this() {
+    constructor(id_vaca: Int?,id_raza_vaca: Int, id_ubicacion: Int, nombre_vaca: String, fecha_nac: String, caravana: String, activo: Int, sincronizado: Int, id_sexo: Int, peso: String ) : this() {
         this.id_vaca = id_vaca
         this.id_raza_vaca=id_raza_vaca
         this.id_ubicacion=id_ubicacion
@@ -48,7 +46,7 @@ class VacaModel() : Parcelable {
 
     }
 
-    constructor(id_raza_vaca: Int, id_ubicacion: Int, nombre_vaca: String, fecha_nac: String, caravana: String,  activo: Int, sincronizado: Int, id_sexo: Int, peso: Int) : this() {
+    constructor( id_raza_vaca: Int, id_ubicacion: Int, nombre_vaca: String, fecha_nac: String, caravana: String,  activo: Int, sincronizado: Int, id_sexo: Int, peso: String) : this() {
         this.id_raza_vaca=id_raza_vaca
         this.id_ubicacion=id_ubicacion
         this.nombre_vaca=nombre_vaca
@@ -69,10 +67,9 @@ class VacaModel() : Parcelable {
         parcel.writeString(fecha_nac)
         parcel.writeString(caravana)
         parcel.writeInt(position)
-        parcel.writeValue(activo)
-        parcel.writeValue(sincronizado)
         id_sexo?.let { parcel.writeInt(it) }
-        parcel.writeValue(peso)
+        parcel.writeString(peso)
+        parcel.writeString(peso)
     }
 
     override fun describeContents(): Int {

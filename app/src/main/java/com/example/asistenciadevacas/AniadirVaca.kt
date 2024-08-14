@@ -8,6 +8,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -90,15 +91,17 @@ class AniadirVaca : AppCompatActivity() {
 
         if(editar){
             val vaca = intent.getParcelableExtra<VacaModel>("vaca")
+            Log.d("DEBUG", "Peso después de recibir: ${vaca?.peso}")
 
             if (vaca != null) {
                 txtNombreVaca.setText(vaca.nombre_vaca)
                 txtFechaNacimiento.setText(vaca.fecha_nac)
                 txtNroCaravana.setText(vaca.caravana)
+                txtPeso.setText(vaca.peso)
                 vaca.id_raza_vaca?.let { SnnColor.setSelection(it) }
                 vaca.id_ubicacion?.let { SnnUbicacion.setSelection(it) }
                 vaca.id_sexo?.let { SnnSexo.setSelection(it) }
-                txtPeso.setText(vaca.peso.toString())
+
             }
 
             btnGuardar.setOnClickListener{
@@ -107,10 +110,11 @@ class AniadirVaca : AppCompatActivity() {
                     if (txtNombreVaca.text.toString().trim() != "") {
                         vaca.id_ubicacion = SnnUbicacion.selectedItemPosition
                         vaca.id_raza_vaca = SnnColor.selectedItemPosition
+                        vaca.id_sexo = SnnSexo.selectedItemPosition
                         vaca.nombre_vaca = txtNombreVaca.text.toString()
                         vaca.fecha_nac = txtFechaNacimiento.text.toString()
                         vaca.caravana = txtNroCaravana.text.toString()
-                        vaca.peso = txtPeso.text.toString().toIntOrNull()
+                        vaca.peso = txtPeso.text.toString()
                         conexion.editarVaca(vaca)
                         //hay que hacer una funcion de esto
                         ListaDeVacas.vacas!![vaca.position] = vaca
@@ -141,7 +145,7 @@ class AniadirVaca : AppCompatActivity() {
                 if (txtNombreVaca.text.toString().trim() != ""){
                     //llamar a la conexion db
                     val vacaNueva = VacaModel(SnnColor.selectedItemPosition, SnnUbicacion.selectedItemPosition,
-                        txtNombreVaca.text.toString(), txtFechaNacimiento.text.toString(), txtNroCaravana.text.toString(),1,0,SnnSexo.selectedItemPosition,txtPeso.text.toString().toIntOrNull() ?: 0 )
+                        txtNombreVaca.text.toString(), txtFechaNacimiento.text.toString(), txtNroCaravana.text.toString(),1,0,SnnSexo.selectedItemPosition,txtPeso.text.toString())
                     //guardar y limpiar campo (luego hacer metodo)
                     val idVaca = conexion.guardarVaca(vacaNueva)
                     vacaNueva.id_vaca = idVaca!!.toInt()
@@ -167,9 +171,6 @@ class AniadirVaca : AppCompatActivity() {
         }
 
     }
-
-
-
 
     fun mostrarDialogoError() {
         val builder = AlertDialog.Builder(this, R.style.AlertDialogCustom)

@@ -80,7 +80,7 @@
                     android:background="@drawable/border_button_sin_color"
                     android:ems="10"
                     android:hint="@string/n_peso"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:paddingStart="15dp"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#FFFFFF"

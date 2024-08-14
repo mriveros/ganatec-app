@@ -19,7 +19,7 @@ class ConexionDB {
             put("fecha_nac", vaca.fecha_nac)
             put("fecha_preniez", vaca.fecha_preniez)
             put("caravana", vaca.caravana)
-            put("activo", vaca.activo)
+            put("activo", 1)
             put("sincronizado", vaca.sincronizado)
             put("id_sexo", vaca.id_sexo)
             put("peso", vaca.peso)
@@ -71,7 +71,7 @@ class ConexionDB {
             val activo = cursor.getInt(cursor.getColumnIndexOrThrow("activo"))
             val sincronizado = cursor.getInt(cursor.getColumnIndexOrThrow("sincronizado"))
             val id_sexo = cursor.getInt(cursor.getColumnIndexOrThrow("id_sexo"))
-            val peso = cursor.getInt(cursor.getColumnIndexOrThrow("peso"))
+            val peso = cursor.getString(cursor.getColumnIndexOrThrow("peso"))
 
             vacas.add(VacaModel(id,id_raza, id_ubicacion, nombre, nacimiento, caravana, activo,sincronizado,id_sexo, peso))
         }
@@ -147,7 +147,7 @@ class ConexionDB {
                 val activo = cursor.getInt(cursor.getColumnIndexOrThrow("activo"))
                 val sincronizado = cursor.getInt(cursor.getColumnIndexOrThrow("sincronizado"))
                 val id_sexo = cursor.getInt(cursor.getColumnIndexOrThrow("id_sexo"))
-                val peso = cursor.getInt(cursor.getColumnIndexOrThrow("peso"))
+                val peso = cursor.getString(cursor.getColumnIndexOrThrow("peso"))
 
                 vacas.add(VacaModel(id,id_raza, id_ubicacion, nombre, nacimiento, caravana, activo,sincronizado,id_sexo,peso))
 

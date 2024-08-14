@@ -12,6 +12,13 @@ class SQLite(context: Context?, dbH: String?, factory: SQLiteDatabase.CursorFact
                 descripcion VARCHAR(30)
             )
         """)
+        //tabla SEXO
+        db?.execSQL("""
+            CREATE TABLE sexo (
+                id_sexo_vaca INTEGER PRIMARY KEY AUTOINCREMENT, 
+                descripcion VARCHAR(30)
+            )
+        """)
         //tabla UBICACIÖN
         db?.execSQL( """
             CREATE TABLE ubicacion (
@@ -33,9 +40,10 @@ class SQLite(context: Context?, dbH: String?, factory: SQLiteDatabase.CursorFact
                 activo INTEGER,
                 sincronizado INTEGER,
                 id_sexo INTEGER,
-                peso integer,
-                FOREIGN KEY (id_raza_vaca) REFERENCES color(id_raza_vaca),
-                FOREIGN KEY (id_ubicacion) REFERENCES ubicacion(id_ubicacion)                
+                peso TEXT,
+                FOREIGN KEY (id_raza_vaca) REFERENCES raza(id_raza_vaca),
+                FOREIGN KEY (id_ubicacion) REFERENCES ubicacion(id_ubicacion),
+                FOREIGN KEY (id_sexo) REFERENCES sexo(id_sexo_vaca)          
             )
         """)
         //tabla ASISTENCIA

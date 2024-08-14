@@ -3,6 +3,7 @@ package com.example.asistenciadevacas
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -40,7 +41,7 @@ class DetalleVaca : AppCompatActivity() {
         val ubicacionVaca = findViewById<TextView>(R.id.SnnUbicacion)
         val colorVaca = findViewById<TextView>(R.id.SnnColor)
         val sexoVaca = findViewById<TextView>(R.id.SnnSexo)
-        val pesoVaca = findViewById<TextView>(R.id.SnnPeso)
+        val pesoVaca = findViewById<TextView>(R.id.TxtPeso)
 
         val vaca = ListaDeVacas.vacas!![intent.getIntExtra("position", 0)]
         if (vaca != null) {
@@ -88,6 +89,7 @@ class DetalleVaca : AppCompatActivity() {
             val intent = Intent(this, AniadirVaca::class.java)
             intent.putExtra("editar", true)
             intent.putExtra("vaca", vaca)
+            Log.d("DEBUG", "Peso antes de enviar: ${vaca.peso}")
             startActivity(intent)
         }
     }
