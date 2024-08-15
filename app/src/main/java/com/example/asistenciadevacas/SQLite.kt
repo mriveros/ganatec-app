@@ -57,6 +57,31 @@ class SQLite(context: Context?, dbH: String?, factory: SQLiteDatabase.CursorFact
                 FOREIGN KEY (id_ubicacion) REFERENCES ubicacion(id_ubicacion)
             )
         """)
+        //tabla controles
+        db?.execSQL("""
+            CREATE TABLE tipo_control ( 
+                id_tipo_control INTEGER PRIMARY KEY AUTOINCREMENT, 
+                descripcion INTEGER
+            )
+        """)
+        //tabla controles
+        db?.execSQL("""
+            CREATE TABLE controles ( 
+                id_control INTEGER PRIMARY KEY AUTOINCREMENT, 
+                id_tipo_control INTEGER,  
+                id_vaca INTEGER, 
+                fecha TEXT, 
+                peso TEXT,
+                observacion TEXT,
+                FOREIGN KEY (id_vaca) REFERENCES vaca(id_vaca),
+                FOREIGN KEY (id_tipo_control) REFERENCES control(id_control)  
+            )
+        """)
+        // Inserción de valores por defecto en la tabla tipo_control
+        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Control de peso')")
+        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Control de salud')")
+        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Control de alimentación')")
+        
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
