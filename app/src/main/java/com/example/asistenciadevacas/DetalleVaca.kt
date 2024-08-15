@@ -83,7 +83,7 @@ class DetalleVaca : AppCompatActivity() {
                 alert.show()
             }
         }
-
+        //Editar la vaca seleccionada
         val btnEditarVaca = findViewById<Button>(R.id.btnEditarVaca)
         btnEditarVaca.setOnClickListener{
             val intent = Intent(this, AniadirVaca::class.java)
@@ -91,6 +91,17 @@ class DetalleVaca : AppCompatActivity() {
             intent.putExtra("vaca", vaca)
             Log.d("DEBUG", "Peso antes de enviar: ${vaca.peso}")
             startActivity(intent)
+
+        }
+        //Agregar control a la vaca seleccionada
+        val btnAgregarControl = findViewById<Button>(R.id.btnAgregarControl)
+        btnAgregarControl.setOnClickListener{
+            val intent = Intent(this, ControlVaca::class.java)
+            intent.putExtra("agregar_control", true)
+            intent.putExtra("vaca", vaca)
+            Log.d("DEBUG", "Peso antes de enviar: ${vaca.peso}")
+            startActivity(intent)
+
         }
     }
 }

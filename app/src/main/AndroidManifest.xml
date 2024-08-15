@@ -31,6 +31,9 @@
             android:name=".VacaAsiste"
             android:exported="false" />
         <activity
+                android:name=".ControlVaca"
+                android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
