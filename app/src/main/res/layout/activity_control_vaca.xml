@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#92D692"
-    tools:context=".DetalleVaca">
+    android:background="#161D16"
+    tools:context=".ControlVaca">
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -16,9 +16,7 @@
         app:cardElevation="0dp"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="630dp"
@@ -51,9 +49,52 @@
                     android:textSize="25sp"
                     android:textStyle="bold"/>
 
+            <ScrollView
+                    android:id="@id/scrollView2"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="3dp"
+                    android:background="@drawable/border_button_sin_color"
+                    android:layout_gravity="center"
+                    tools:ignore="MissingConstraints">
+                <Spinner
+                        android:id="@+id/SnnTipoControl"
+                        style="@style/SpinnerTextStyle"
+                        android:layout_width="match_parent"
+                        android:hint="@string/tipo_control"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        tools:ignore="DuplicateIds"/>
+            </ScrollView>
+
+            <EditText
+                    android:id="@+id/txtPeso"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="30dp"
+                    android:background="@drawable/border_button_sin_color"
+                    android:ems="10"
+                    android:hint="@string/n_peso"
+                    android:inputType="number"
+                    android:paddingStart="15dp"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry"/>
+            <EditText
+                    android:layout_width="300dp"
+                    android:layout_height="171dp"
+                    android:inputType="textMultiLine"
+                    android:background="@drawable/border_button_sin_color"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:gravity="start|top"
+                    android:ems="10"
+                    android:id="@+id/editTextTextMultiLine"/>
 
         </LinearLayout>
-        </ScrollView>
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
@@ -75,7 +116,7 @@
             android:layout_weight="1"
             android:layout_marginStart="8dp"
             android:background="@drawable/btn_verde"
-            android:text="@string/editar"
+            android:text="@string/guardar"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold"/>

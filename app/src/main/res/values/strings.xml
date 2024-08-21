@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">CONTROL DE HACIENDA</string>
     <string name="editar">Editar</string>
-    <string name="agregar_control">Agregar Control</string>
     <string name="eliminar">Eliminar</string>
     <string name="a_adir_vaca">AÑADIR VACA</string>
     <string name="n_mero_de_caravana">Número de Caravana</string>
@@ -10,4 +9,8 @@
     <string name="fecha_nacimiento">Fecha Nacimiento</string>
     <string name="nombre">Nombre</string>
     <string name="ver">VER</string>
+    <string name="tipo_control">Tipo Control</string>
+    <string name="guardar">Guardar</string>
+    <string name="agregar_control">Agregar Control</string>
+    <string name="sanitacion">Sanitación</string>
 </resources>
