@@ -32,6 +32,7 @@
             android:exported="false" />
         <activity
                 android:name=".ControlVaca"
+                android:windowSoftInputMode="adjustResize|stateHidden"
                 android:exported="false" />
         <activity
             android:name=".MainActivity"

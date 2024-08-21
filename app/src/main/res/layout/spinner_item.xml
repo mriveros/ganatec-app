@@ -1,0 +1,10 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="#FFFFFF"
+          android:textSize="25sp"
+          android:hint="@string/tipo_control"
+          android:background="@drawable/border_button_sin_color"
+          android:textStyle="bold"
+          android:padding="10dp"
+          android:gravity="center_vertical"/>

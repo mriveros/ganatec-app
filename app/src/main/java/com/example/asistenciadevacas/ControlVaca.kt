@@ -34,7 +34,7 @@ class ControlVaca : AppCompatActivity() {
         val SnnControlesControles = findViewById<Spinner>(R.id.SnnTipoControl)
 
         arrayControles = findViewById(R.id.SnnTipoControl)
-        val adaptadorTiposControlles = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,listaControles)
+        val adaptadorTiposControlles = ArrayAdapter(this, R.layout.spinner_item,listaControles)
         arrayControles.adapter=adaptadorTiposControlles
 
         if (vaca != null) {
