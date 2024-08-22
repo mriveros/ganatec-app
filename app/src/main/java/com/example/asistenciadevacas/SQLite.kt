@@ -78,9 +78,18 @@ class SQLite(context: Context?, dbH: String?, factory: SQLiteDatabase.CursorFact
             )
         """)
         // Inserción de valores por defecto en la tabla tipo_control
-        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Control de peso')")
-        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Control de salud')")
-        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Control de alimentación')")
+        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Vacunación')")
+        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Control de enfermedades')")
+        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Nutrición y suplementación')")
+        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Desparasitación interna')")
+        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Desparasitación externa')")
+        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Manejo reproductivo')")
+        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Manejo de la mastitis')")
+        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Higiene y limpieza')")
+        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Corte de pezuñas')")
+        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Sanitaciones pre y postparto')")
+
+
         
     }
 

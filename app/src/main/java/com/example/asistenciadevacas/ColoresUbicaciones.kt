@@ -45,7 +45,7 @@ class ColoresUbicaciones {
             "Corte de pezuñas",
             "Manejo reproductivo",
             "Sanitaciones pre y postparto",
-            "Control de enfermedades.",
+            "Control de enfermedades",
             "Nutrición y suplementación"
         )
 
