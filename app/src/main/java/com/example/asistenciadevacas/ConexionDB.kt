@@ -156,5 +156,48 @@ class ConexionDB {
         cursor.close()
         return vacas
     }
+    //guardar control vaca
+    fun guardarControlVaca(control:ControlVacaModel): Long? {
+        var db = conexion.writableDatabase
+
+        val values = ContentValues().apply {
+            put("id_tipo_control", control.id_tipo_control)
+            put("id_vaca", control.id_vaca)
+            put("fecha", control.fecha)
+            put("peso", control.peso)
+            put("observacion", control.observacion)
+
+        }
+        return db?.insert("controles", null, values)
+
+    }
+    //obtener todos los controles
+    fun getAllControles(): MutableList<ControlVacaModel> {
+        val db = conexion.readableDatabase
+
+        val cursor = db.query(
+            "controles",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        )
+
+        val controles = mutableListOf<ControlVacaModel>()
+        while (cursor.moveToNext()) {
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow("id_control"))
+            val id_tipo_control = cursor.getInt(cursor.getColumnIndexOrThrow("id_tipo_control"))
+            val id_vaca = cursor.getInt(cursor.getColumnIndexOrThrow("id_vaca"))
+            val fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha"))
+            val peso = cursor.getString(cursor.getColumnIndexOrThrow("peso"))
+            val observacion = cursor.getString(cursor.getColumnIndexOrThrow("observacion"))
+
+            controles.add(ControlVacaModel(id, id_tipo_control, id_vaca, fecha, peso, observacion))
+        }
+        cursor.close()
+        return controles
+    }
 
 }

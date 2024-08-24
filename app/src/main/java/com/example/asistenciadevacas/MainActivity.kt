@@ -41,6 +41,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun syncData() {
         val vacas = conexion.getAllVacas()
+        val controles = conexion.getAllControles()
+
         for (vaca in vacas) {
             // Crear una referencia a la base de datos de Firebase
             val vacaRef = database.child("vacas").child(vaca.id_vaca.toString())
@@ -54,5 +56,20 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Error al sincronizar Vaca ${vaca.id_vaca}", Toast.LENGTH_SHORT).show()
                 }
         }
+        //sincronizar controles
+        for (control in controles) {
+            // Crear una referencia a la base de datos de Firebase
+            val controlRef = database.child("controles").child(control.id_control.toString())
+
+            // Sincronizar los datos
+            controlRef.setValue(control)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Control ${control.id_control} sincronizada", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Error al sincronizar control ${control.id_control}", Toast.LENGTH_SHORT).show()
+                }
+        }
+
     }
 }
