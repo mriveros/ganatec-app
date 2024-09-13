@@ -2,6 +2,7 @@ package com.example.asistenciadevacas
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -41,8 +42,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun syncData() {
         val vacas = conexion.getAllVacas()
+        Log.d("SyncData", "Número de vacas: ${vacas.size}")
         val controles = conexion.getAllControles()
-
+        Log.d("SyncData", "Número de controles: ${controles.size}")
         for (vaca in vacas) {
             // Crear una referencia a la base de datos de Firebase
             val vacaRef = database.child("vacas").child(vaca.id_vaca.toString())
@@ -56,6 +58,8 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Error al sincronizar Vaca ${vaca.id_vaca}", Toast.LENGTH_SHORT).show()
                 }
         }
+
+
         //sincronizar controles
         for (control in controles) {
             // Crear una referencia a la base de datos de Firebase

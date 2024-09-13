@@ -4,6 +4,10 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 class SQLite(context: Context?, dbH: String?, factory: SQLiteDatabase.CursorFactory?, version: Int) : SQLiteOpenHelper(context, dbH, factory, version) {
+    init {
+        // Elimina la base de datos si existe
+        //context?.deleteDatabase(dbH)
+    }
     override fun onCreate(db: SQLiteDatabase?) {
         //tabla COLOR
         db?.execSQL("""
@@ -78,7 +82,7 @@ class SQLite(context: Context?, dbH: String?, factory: SQLiteDatabase.CursorFact
             )
         """)
         // Inserción de valores por defecto en la tabla tipo_control
-        db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Vacunación')")
+       /* db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Vacunación')")
         db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Control de enfermedades')")
         db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Nutrición y suplementación')")
         db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Desparasitación interna')")
@@ -88,14 +92,13 @@ class SQLite(context: Context?, dbH: String?, factory: SQLiteDatabase.CursorFact
         db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Higiene y limpieza')")
         db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Corte de pezuñas')")
         db?.execSQL("INSERT INTO tipo_control (descripcion) VALUES ('Sanitaciones pre y postparto')")
-
-
-        
+    */
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         if (newVersion > oldVersion) {
-            db?.execSQL("ALTER TABLE vaca ADD COLUMN estado INTEGER DEFAULT 0")
+            //db?.execSQL("ALTER TABLE vaca ADD COLUMN estado INTEGER DEFAULT 0")
+
         }
     }
 }

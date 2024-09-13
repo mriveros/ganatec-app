@@ -50,9 +50,8 @@ class ControlVaca : AppCompatActivity() {
             val controlVaca = ControlVacaModel(null,arrayControles.selectedItemPosition,vaca_id,"01/01/2024",peso.text.toString(),observacion.text.toString())
             var id_control = conexion.guardarControlVaca(controlVaca)
             Toast.makeText(this, "Control ${id_control} registrado", Toast.LENGTH_SHORT).show()
-
-
             Log.d("DEBUG", "Se guarda control")
+            finish()
         }
     }
 }

@@ -6,6 +6,7 @@ class ConexionDB {
     var conexion: SQLite
     constructor(context: Context){
         conexion = SQLite(context, "dbH", null, 1)
+
     }
 
     //guardar vaca
