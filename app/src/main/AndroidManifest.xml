@@ -35,6 +35,13 @@
                 android:windowSoftInputMode="adjustResize|stateHidden"
                 android:exported="false" />
         <activity
+                android:name=".ListaControles"
+                android:exported="false" />
+        <activity
+                android:name=".DetalleControl"
+                android:windowSoftInputMode="adjustResize|stateHidden"
+                android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

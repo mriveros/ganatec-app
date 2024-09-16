@@ -1,0 +1,95 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#281C3D"
+    tools:context=".DetalleVaca">
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="630dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/txtNombreVaca"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:background="@drawable/border_nombre_vaca"
+                    android:paddingStart="15dp"
+                    android:paddingTop="9dp"
+                    android:layout_marginBottom="30dp"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry"/>
+
+            <TextView
+                    android:id="@+id/txtFechaControl"
+                    android:layout_marginBottom="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_button_sin_color"
+                    android:paddingStart="15dp"
+                    android:paddingTop="9dp"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
+
+            <TextView
+                    android:id="@+id/SnnTipoControl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/border_button_sin_color"
+                    android:paddingStart="15dp"
+                    android:paddingTop="9dp"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
+
+            <TextView
+                    android:id="@+id/Peso"
+                    android:layout_marginBottom="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_button_sin_color"
+                    android:paddingStart="15dp"
+                    android:paddingTop="9dp"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
+
+            <TextView
+                    android:id="@+id/TxtObservacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/border_button_sin_color"
+                    android:paddingStart="15dp"
+                    android:paddingTop="9dp"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
+
+        </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

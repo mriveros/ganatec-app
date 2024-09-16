@@ -109,31 +109,30 @@
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:textStyle="bold"/>
-            <Button
-                    android:id="@+id/btnAgregarControl"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/btn_azul"
-                    android:text="@string/agregar_control"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:minHeight="45dp"/>
-            <Button
-                    android:id="@+id/btnVerControl"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="22dp"
-                    android:background="@drawable/btn_azul"
-                    android:text="@string/ver_control"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    android:minHeight="45dp"/>
+
+               <Button
+                       android:id="@+id/btnAgregarControl"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:layout_weight="3"
+                       android:background="@drawable/btn_azul"
+                       android:text="@string/agregar_control"
+                       android:textColor="@color/black"
+                       android:textSize="25sp"
+                       android:textStyle="bold"
+                       android:minHeight="45dp"/>
+               <Button
+                       android:id="@+id/btnVerControl"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:layout_weight="3"
+                       android:background="@drawable/btn_verde"
+                       android:text="@string/ver_control"
+                       android:textColor="@color/black"
+                       android:textSize="25sp"
+                       android:textStyle="bold"
+                       android:minHeight="45dp"/>
+
         </LinearLayout>
         </ScrollView>
     </androidx.cardview.widget.CardView>

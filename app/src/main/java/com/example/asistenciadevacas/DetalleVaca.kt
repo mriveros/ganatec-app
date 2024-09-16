@@ -103,6 +103,14 @@ class DetalleVaca : AppCompatActivity() {
             startActivity(intent)
 
         }
+        val btnVerControl = findViewById<Button>(R.id.btnVerControl)
+        btnVerControl.setOnClickListener{
+            val intent = Intent(this, ListaControles::class.java)
+            intent.putExtra("ver_control", true)
+            intent.putExtra("vaca", vaca)
+            startActivity(intent)
+
+        }
     }
 }
 

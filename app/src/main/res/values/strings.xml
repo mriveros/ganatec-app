@@ -12,7 +12,7 @@
     <string name="tipo_control">Tipo Control</string>
     <string name="guardar">Guardar</string>
     <string name="agregar_control">Agregar Control</string>
-    <string name="ver_control">Ver Control</string>
+    <string name="ver_control">Ver Controles</string>
     <string name="sanitacion">Sanitación</string>
     <string name="observacion">Observación...</string>
 </resources>
