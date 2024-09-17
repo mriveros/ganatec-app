@@ -202,11 +202,11 @@ class ConexionDB {
     }
 
     //NUEVAS FUNCIONES DE CONTROLES
-    fun getControlesPaginadas(offset: Int, limit: Int): MutableList<ControlModel> {
+    fun getControlesPaginadas(offset: Int, limit: Int, vaca_id: Int?): MutableList<ControlModel> {
         val controles = mutableListOf<ControlModel>()
         // Consulta para obtener `limit` controles a partir de `offset`
         // Ejemplo:
-        val query = "SELECT * FROM controles LIMIT $limit OFFSET $offset"
+        val query = "SELECT * FROM controles where id_vaca = $vaca_id LIMIT $limit OFFSET $offset"
         val db = conexion.readableDatabase
         val cursor = db.rawQuery(query, null)
 

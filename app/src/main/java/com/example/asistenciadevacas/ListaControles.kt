@@ -12,10 +12,9 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.asistenciadevacas.ListaDeVacasAsistidas.Companion.nuevasVacas
-import com.example.asistenciadevacas.ListaDeVacasAsistidas.Companion.nuevoVacaAdapter
-
 class ListaControles : AppCompatActivity() {
+
+    private var vaca: VacaModel? = null  // Guardamos la vaca seleccionada
 
     companion object {
         var controlAdapter: ControlAdapter? = null
@@ -32,8 +31,6 @@ class ListaControles : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_de_controles)
-
-        // No rotate pantalla
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         val listaControles = findViewById<RecyclerView>(R.id.rvListaControles)
@@ -42,6 +39,12 @@ class ListaControles : AppCompatActivity() {
 
         controlAdapter = ControlAdapter(controlesFiltradas)
         listaControles.adapter = controlAdapter
+
+        // Obtener la vaca desde el Intent una sola vez
+        vaca = intent.getParcelableExtra("vaca")
+
+        // Cargar la primera página de datos
+        loadControles(vaca?.id_vaca)
 
         // Configurar el EditText para la búsqueda
         val etBuscarcontrol = findViewById<EditText>(R.id.etBuscarControl)
@@ -56,15 +59,12 @@ class ListaControles : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        // Cargar la primera página de datos
-        loadControles()
-
         // Configurar el scroll listener para paginación
         listaControles.addOnScrollListener(object : PaginationScrollListener(layoutManager) {
             override fun loadMoreItems() {
                 isLoading = true
                 currentPage++
-                loadControles()
+                loadControles(vaca?.id_vaca)  // Usamos el vaca_id guardado
             }
 
             override fun isLastPage(): Boolean {
@@ -76,24 +76,27 @@ class ListaControles : AppCompatActivity() {
             }
         })
 
-        // Configuración del botón para añadir una vaca
+        // Configuración del botón para añadir un control
         val btnAniadirVaca = findViewById<Button>(R.id.btnAniadirControl)
         btnAniadirVaca.setOnClickListener {
-            //aca se debe pasar argumentos de vaca del model vaca.....
+            // Pasar el ID de la vaca actual al siguiente intent
             val intent = Intent(this, ControlVaca::class.java)
-            //startActivity(intent)
+            intent.putExtra("vaca_id", vaca?.id_vaca)  // Pasar el vaca_id al siguiente Activity
             startActivityForResult(intent, REQUEST_CODE_ADD_VACA)
         }
     }
 
-    private fun loadControles() {
-        val conexion = ConexionDB(this)
-        val nuevasControles = conexion.getControlesPaginadas(currentPage * pageSize, pageSize)
+    private fun loadControles(vaca_id: Int?) {
 
-        // Log para verificar los datos obtenidos
-        Log.d("Lista De Controles", "Nuevas Controles: ${nuevasControles.size}")
+        // Limpiar las listas antes de cargar nuevos datos
+        val conexion = ConexionDB(this)
+        val nuevasControles = conexion.getControlesPaginadas(currentPage * pageSize, pageSize, vaca_id)
+
+        Log.d("Lista De Controles", "Nuevos Controles: ${nuevasControles.size}")
 
         if (nuevasControles.isNotEmpty()) {
+            controles.clear()
+            controlesFiltradas.clear()
             controles.addAll(nuevasControles)
             controlesFiltradas.addAll(nuevasControles)
             controlAdapter?.notifyDataSetChanged()

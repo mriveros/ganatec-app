@@ -16,7 +16,7 @@ class ControlAdapter(private var controles: List<ControlModel>) : RecyclerView.A
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nombre_control: TextView = view.findViewById(R.id.tipo_control)
         fun bind(control: ControlModel) {
-            nombre_control.text = control.id_tipo_control.toString()
+            nombre_control.text = ColoresUbicaciones.controles[control.id_tipo_control!!]
         }
     }
 
@@ -35,7 +35,7 @@ class ControlAdapter(private var controles: List<ControlModel>) : RecyclerView.A
 
         val btnDetalle = holder.itemView.findViewById<Button>(R.id.btnVerDetalleControl)
         btnDetalle.setOnClickListener {
-            val intent = Intent(holder.itemView.context, DetalleVaca::class.java)
+            val intent = Intent(holder.itemView.context, DetalleControl::class.java)
             intent.putExtra("position", position)
             startActivity(holder.itemView.context, intent, null)
         }
