@@ -65,7 +65,7 @@ class ListaControles : AppCompatActivity() {
         btnAniadirControl.setOnClickListener {
             // Pasar el ID de la vaca actual al siguiente intent
             val intent = Intent(this, ControlVaca::class.java)
-            intent.putExtra("vaca_id", vaca?.id_vaca)  // Pasar el vaca_id al siguiente Activity
+            intent.putExtra("vaca", vaca)  // Pasar el objeto vaca al siguiente Activity
             startActivityForResult(intent, REQUEST_CODE_ADD_VACA)
         }
     }
