@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 class ListaControles : AppCompatActivity() {
 
     private var vaca: VacaModel? = null  // Guardamos la vaca seleccionada
+    private var vacaIdAnterior: Int? = null  // Variable para guardar el vaca_id anterior
 
     companion object {
         var controlAdapter: ControlAdapter? = null
@@ -59,26 +60,9 @@ class ListaControles : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        // Configurar el scroll listener para paginación
-        listaControles.addOnScrollListener(object : PaginationScrollListener(layoutManager) {
-            override fun loadMoreItems() {
-                isLoading = true
-                currentPage++
-                loadControles(vaca?.id_vaca)  // Usamos el vaca_id guardado
-            }
-
-            override fun isLastPage(): Boolean {
-                return isLastPage
-            }
-
-            override fun isLoading(): Boolean {
-                return isLoading
-            }
-        })
-
         // Configuración del botón para añadir un control
-        val btnAniadirVaca = findViewById<Button>(R.id.btnAniadirControl)
-        btnAniadirVaca.setOnClickListener {
+        val btnAniadirControl = findViewById<Button>(R.id.btnAniadirControl)
+        btnAniadirControl.setOnClickListener {
             // Pasar el ID de la vaca actual al siguiente intent
             val intent = Intent(this, ControlVaca::class.java)
             intent.putExtra("vaca_id", vaca?.id_vaca)  // Pasar el vaca_id al siguiente Activity
@@ -87,21 +71,29 @@ class ListaControles : AppCompatActivity() {
     }
 
     private fun loadControles(vaca_id: Int?) {
-
-        // Limpiar las listas antes de cargar nuevos datos
-        val conexion = ConexionDB(this)
-        val nuevasControles = conexion.getControlesPaginadas(currentPage * pageSize, pageSize, vaca_id)
-
-        Log.d("Lista De Controles", "Nuevos Controles: ${nuevasControles.size}")
-
-        if (nuevasControles.isNotEmpty()) {
+        // Comprobar si el vaca_id es distinto al anterior
+        if (vacaIdAnterior != vaca_id) {
+            // Reiniciar listas si el vaca_id ha cambiado
             controles.clear()
             controlesFiltradas.clear()
+            controlAdapter?.notifyDataSetChanged()
+
+            // Actualizar vacaIdAnterior con el nuevo vaca_id
+            vacaIdAnterior = vaca_id
+        }
+
+        // Realizar la conexión a la base de datos
+        val conexion = ConexionDB(this)
+        val nuevasControles = conexion.getAllControles(vaca_id)
+
+        // Añadir los nuevos controles a las listas
+        if (nuevasControles.isNotEmpty()) {
             controles.addAll(nuevasControles)
             controlesFiltradas.addAll(nuevasControles)
             controlAdapter?.notifyDataSetChanged()
         } else {
-            isLastPage = true
+            Log.d("Lista De Controles", "No se encontraron controles para la vaca con ID: $vaca_id")
+            isLastPage = true // Marca como última página si no hay más controles
         }
 
         isLoading = false
