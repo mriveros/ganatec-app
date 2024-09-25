@@ -14,8 +14,10 @@ class ControlAdapter(private var controles: List<ControlModel>) : RecyclerView.A
     private var controlesFiltrados: List<ControlModel> = controles
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val fecha_control: TextView = view.findViewById(R.id.fecha_control)
         val nombre_control: TextView = view.findViewById(R.id.tipo_control)
         fun bind(control: ControlModel) {
+            fecha_control.text = control.fecha
             nombre_control.text = ColoresUbicaciones.controles[control.id_tipo_control!!]
         }
     }
@@ -49,13 +51,15 @@ class ControlAdapter(private var controles: List<ControlModel>) : RecyclerView.A
             controles
         } else {
             // Primero buscamos por nombre
-            val resultadosPorNombre = controles.filter {
-                val nombre = it.observacion?.lowercase() ?: ""
-                nombre.contains(textoLower)
-            }
+            val resultadosPorFecha = controles.filter {
+                //tipo control del objeto controles
+                val fecha = it.fecha.toString()
 
+                //obtener todos los controles que contengan textoLower del array ColoresUbicaciones.controles
+                fecha.contains(textoLower)
+            }
             // Unimos ambos resultados y eliminamos duplicados
-            (resultadosPorNombre).distinct()
+            (resultadosPorFecha).distinct()
         }
 
         notifyDataSetChanged()

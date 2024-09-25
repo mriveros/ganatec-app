@@ -3,12 +3,7 @@ package com.example.asistenciadevacas
 import android.os.Parcel
 import android.os.Parcelable
 import java.sql.Blob
-/* id_control INTEGER PRIMARY KEY AUTOINCREMENT,
-id_tipo_control INTEGER,
-id_vaca INTEGER,
-fecha TEXT,
-peso TEXT,
-observacion TEXT,*/
+
 class ControlModel() : Parcelable {
     var id_control: Int? = null
     var id_tipo_control: Int? = null

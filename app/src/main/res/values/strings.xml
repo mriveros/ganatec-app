@@ -15,4 +15,5 @@
     <string name="ver_control">Ver Controles</string>
     <string name="sanitacion">Sanitación</string>
     <string name="observacion">Observación...</string>
+    <string name="buscar_control_por_fecha">Buscar control por fecha</string>
 </resources>

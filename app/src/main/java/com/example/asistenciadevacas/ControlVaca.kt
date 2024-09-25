@@ -2,11 +2,11 @@ package com.example.asistenciadevacas
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.asistenciadevacas.ControlVacaModel as ControlVacaModel
-
+import java.text.SimpleDateFormat
+import java.util.Date
 class ControlVaca : AppCompatActivity() {
 
     companion object{
@@ -46,11 +46,12 @@ class ControlVaca : AppCompatActivity() {
         val btnGuardarControl = findViewById<Button>(R.id.btnGuardarControl)
         btnGuardarControl.setOnClickListener{
             val conexion = ConexionDB(this)
+            val sdf = SimpleDateFormat("dd/MM/yyyy") // Formato deseado
+            val fechaActual = sdf.format(Date()) // Fecha actual
             //iniciar VacaControlModel para pasar argumentos
-            val controlVaca = ControlVacaModel(null,arrayControles.selectedItemPosition,vaca_id,"01/01/2024",peso.text.toString(),observacion.text.toString())
+            val controlVaca = ControlVacaModel(null,arrayControles.selectedItemPosition,vaca_id,fechaActual,peso.text.toString(),observacion.text.toString())
             var id_control = conexion.guardarControlVaca(controlVaca)
             Toast.makeText(this, "Control ${id_control} registrado", Toast.LENGTH_SHORT).show()
-            Log.d("DEBUG", "Se guarda control")
             finish()
         }
     }
