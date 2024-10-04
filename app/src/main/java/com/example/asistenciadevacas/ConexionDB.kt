@@ -253,5 +253,27 @@ class ConexionDB {
         cursor.close()
         return controles
     }
+    fun getControl(control_id: Long?): ControlModel? {
+        val query = "SELECT * FROM controles WHERE id_control = $control_id"
+        val db = conexion.readableDatabase
+        val cursor = db.rawQuery(query, null)
+
+        var control: ControlModel? = null
+
+        if (cursor.moveToFirst()) {
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow("id_control"))
+            val id_tipo_control = cursor.getInt(cursor.getColumnIndexOrThrow("id_tipo_control"))
+            val id_vaca = cursor.getInt(cursor.getColumnIndexOrThrow("id_vaca"))
+            val fecha = cursor.getString(cursor.getColumnIndexOrThrow("fecha"))
+            val peso = cursor.getString(cursor.getColumnIndexOrThrow("peso"))
+            val observacion = cursor.getString(cursor.getColumnIndexOrThrow("observacion"))
+
+            // Crear el objeto ControlModel con los datos obtenidos
+            control = ControlModel(id, id_tipo_control, id_vaca, fecha, peso, observacion)
+        }
+
+        cursor.close()
+        return control
+    }
 
 }

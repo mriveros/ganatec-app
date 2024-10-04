@@ -33,12 +33,12 @@ class ControlAdapter(private var controles: List<ControlModel>) : RecyclerView.A
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val control = controlesFiltrados[position]
-        control.position = position
 
         val btnDetalle = holder.itemView.findViewById<Button>(R.id.btnVerDetalleControl)
         btnDetalle.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetalleControl::class.java)
-            intent.putExtra("position", position)
+            // Pasa el objeto ControlModel como un extra
+            intent.putExtra("control", control)
             startActivity(holder.itemView.context, intent, null)
         }
         holder.bind(control)
@@ -46,22 +46,41 @@ class ControlAdapter(private var controles: List<ControlModel>) : RecyclerView.A
 
     fun filtrar(texto: String) {
         val textoLower = texto.lowercase()
-
         controlesFiltrados = if (textoLower.isEmpty()) {
             controles
         } else {
-            // Primero buscamos por nombre
+            // Primero buscamos por fecha
             val resultadosPorFecha = controles.filter {
                 //tipo control del objeto controles
                 val fecha = it.fecha.toString()
-
-                //obtener todos los controles que contengan textoLower del array ColoresUbicaciones.controles
+                //obtener todos los controles que contengan la fecha
                 fecha.contains(textoLower)
             }
-            // Unimos ambos resultados y eliminamos duplicados
-            (resultadosPorFecha).distinct()
-        }
 
+            //Buscamos por nombre de control
+            val resultadosPorControl = controles.filter {
+                //tipo control del objeto controles
+                val control = it.id_tipo_control.toString()
+                //obtener todos los controles que contengan el valor de textoLower
+                var indexEncontrado: Int? = null
+                // Iterar sobre la colección 'controles' de la clase ColoresUbicaciones
+                ColoresUbicaciones.controles.forEachIndexed { index, control ->
+                    if (control.lowercase().contains(textoLower)) {
+                        indexEncontrado = index
+                        return@forEachIndexed  // Salir del loop si se encuentra coincidencia
+                    }
+                }
+                if (indexEncontrado != null) {
+                    control.contains(indexEncontrado.toString())
+                } else {
+                    false
+                }
+
+
+            }
+            // Unimos ambos resultados y eliminamos duplicados
+            (resultadosPorFecha+resultadosPorControl).distinct()
+        }
         notifyDataSetChanged()
     }
 

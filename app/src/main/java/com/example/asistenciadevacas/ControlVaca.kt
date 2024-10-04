@@ -21,6 +21,7 @@ class ControlVaca : AppCompatActivity() {
         val vaca = intent.getParcelableExtra<VacaModel>("vaca")
         mostrarDetalle(vaca)
         invalidateOptionsMenu()
+
     }
 
     @SuppressLint("SetTextI18n", "WrongViewCast")
@@ -51,7 +52,16 @@ class ControlVaca : AppCompatActivity() {
             //iniciar VacaControlModel para pasar argumentos
             val controlVaca = ControlVacaModel(null,arrayControles.selectedItemPosition,vaca_id,fechaActual,peso.text.toString(),observacion.text.toString())
             var id_control = conexion.guardarControlVaca(controlVaca)
+            val control: ControlModel? = conexion.getControl(id_control)
             Toast.makeText(this, "Control ${id_control} registrado", Toast.LENGTH_SHORT).show()
+            if (control != null) {
+                ListaControles.controles!!.add(control)
+            }
+            if (control != null) {
+                ListaControles.controlesFiltradas!!.add(control)
+            }
+            ListaControles.controlAdapter!!.notifyItemInserted(ListaControles.controles!!.lastIndex)
+            ListaControles.controlAdapter!!.ordenarPosiciones()
             finish()
         }
     }

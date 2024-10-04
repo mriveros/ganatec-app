@@ -37,16 +37,16 @@ class ColoresUbicaciones {
             "Control de Alimentación"
         )
         val controles = arrayListOf(
-            "Vacunación",
-            "Desparasitación interna",
-            "Desparasitación externa",
-            "Manejo de la mastitis",
-            "Higiene y limpieza",
-            "Corte de pezuñas",
-            "Manejo reproductivo",
-            "Sanitaciones pre y postparto",
-            "Control de enfermedades",
-            "Nutrición y suplementación"
+            "1. Vacunación",
+            "2. Desparasitación interna",
+            "3. Desparasitación externa",
+            "4. Manejo de la mastitis",
+            "5. Higiene y limpieza",
+            "6. Corte de pezuñas",
+            "7. Manejo reproductivo",
+            "8. Sanitaciones pre y postparto",
+            "9. Control de enfermedades",
+            "10. Nutrición y suplementación"
         )
 
     }

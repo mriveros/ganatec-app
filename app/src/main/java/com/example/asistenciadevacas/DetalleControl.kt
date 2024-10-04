@@ -32,9 +32,7 @@ class DetalleControl : AppCompatActivity() {
         }
     }
     @SuppressLint("SetTextI18n", "WrongViewCast")
-    fun mostrarDetalle(){
-        val conexion = ConexionDB(this)
-
+    fun mostrarDetalle() {
         val tipo_control = findViewById<TextView>(R.id.SnnTipoControl)
         val vaca_id = findViewById<TextView>(R.id.txtNombreVaca)
         val control_id = findViewById<TextView>(R.id.SnnTipoControl)
@@ -42,26 +40,16 @@ class DetalleControl : AppCompatActivity() {
         val peso = findViewById<TextView>(R.id.Peso)
         val observacion = findViewById<TextView>(R.id.TxtObservacion)
 
-        val control = ListaControles.controles!![intent.getIntExtra("position", 0)]
+        // Obtén el objeto ControlModel directamente del intent
+        val control = intent.getParcelableExtra<ControlModel>("control")
+
         if (control != null) {
             vaca_id.text = "Vaca: " + control.id_vaca
             fecha_control.text = "Fecha: " + control.fecha
             control_id.text = "Control: " + ColoresUbicaciones.controles[control.id_tipo_control!!]
             observacion.text = "Observacion: " + control.observacion
             peso.text = "Peso: " + control.peso
-
         }
-
-        //Agregar control a la vaca seleccionada
-        /*val btnAgregarControl = findViewById<Button>(R.id.btnAgregarControl)
-        btnAgregarControl.setOnClickListener{
-            val intent = Intent(this, ControlVaca::class.java)
-            intent.putExtra("agregar_control", true)
-            intent.putExtra("vaca", vaca)
-            Log.d("DEBUG", "Peso antes de enviar: ${vaca.peso}")
-            startActivity(intent)
-
-        }*/
     }
 }
 
