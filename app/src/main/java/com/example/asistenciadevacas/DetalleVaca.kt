@@ -48,9 +48,9 @@ class DetalleVaca : AppCompatActivity() {
             nombreVaca.text = "Nombre: " + vaca.nombre_vaca //?.toUpperCase()
             caravanaVaca.text = "Caravana: " + vaca.caravana
             nacimientoVaca.text = "Fecha Nacimiento: " + vaca.fecha_nac
-            ubicacionVaca.text = "Ubicación: " + ColoresUbicaciones.ubicaciones[vaca.id_ubicacion!!]
-            colorVaca.text = "Raza: " + ColoresUbicaciones.colores[vaca.id_raza_vaca!!]
-            sexoVaca.text = "Sexo: " + ColoresUbicaciones.sexos[vaca.id_sexo!!]
+            ubicacionVaca.text = "Ubicación: " + EstructurasColecciones.ubicaciones[vaca.id_ubicacion!!]
+            colorVaca.text = "Raza: " + EstructurasColecciones.colores[vaca.id_raza_vaca!!]
+            sexoVaca.text = "Sexo: " + EstructurasColecciones.sexos[vaca.id_sexo!!]
             pesoVaca.text = "Peso: " + vaca.peso
         }
 

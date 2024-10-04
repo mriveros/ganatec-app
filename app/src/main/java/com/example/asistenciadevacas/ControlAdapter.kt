@@ -18,7 +18,7 @@ class ControlAdapter(private var controles: List<ControlModel>) : RecyclerView.A
         val nombre_control: TextView = view.findViewById(R.id.tipo_control)
         fun bind(control: ControlModel) {
             fecha_control.text = control.fecha
-            nombre_control.text = ColoresUbicaciones.controles[control.id_tipo_control!!]
+            nombre_control.text = EstructurasColecciones.controles[control.id_tipo_control!!]
         }
     }
 
@@ -64,7 +64,7 @@ class ControlAdapter(private var controles: List<ControlModel>) : RecyclerView.A
                 //obtener todos los controles que contengan el valor de textoLower
                 var indexEncontrado: Int? = null
                 // Iterar sobre la colección 'controles' de la clase ColoresUbicaciones
-                ColoresUbicaciones.controles.forEachIndexed { index, control ->
+                EstructurasColecciones.controles.forEachIndexed { index, control ->
                     if (control.lowercase().contains(textoLower)) {
                         indexEncontrado = index
                         return@forEachIndexed  // Salir del loop si se encuentra coincidencia

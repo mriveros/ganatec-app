@@ -46,7 +46,7 @@ class DetalleControl : AppCompatActivity() {
         if (control != null) {
             vaca_id.text = "Vaca: " + control.id_vaca
             fecha_control.text = "Fecha: " + control.fecha
-            control_id.text = "Control: " + ColoresUbicaciones.controles[control.id_tipo_control!!]
+            control_id.text = "Control: " + EstructurasColecciones.controles[control.id_tipo_control!!]
             observacion.text = "Observacion: " + control.observacion
             peso.text = "Peso: " + control.peso
         }

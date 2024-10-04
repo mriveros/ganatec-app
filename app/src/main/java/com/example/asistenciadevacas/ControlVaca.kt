@@ -31,7 +31,7 @@ class ControlVaca : AppCompatActivity() {
         val caravanaVaca = findViewById<TextView>(R.id.txtNroCaravana)
         var peso = findViewById<TextView>(R.id.txtPeso)
         var observacion = findViewById<TextView>(R.id.txtObservacion)
-        val listaControles = ColoresUbicaciones.controles
+        val listaControles = EstructurasColecciones.controles
         val SnnControles = findViewById<Spinner>(R.id.SnnTipoControl)
 
         arrayControles = findViewById(R.id.SnnTipoControl)

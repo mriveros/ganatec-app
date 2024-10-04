@@ -1,6 +1,6 @@
 package com.example.asistenciadevacas
 
-class ColoresUbicaciones {
+class EstructurasColecciones {
 
     companion object{
         val colores = arrayListOf(

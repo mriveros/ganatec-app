@@ -62,9 +62,9 @@ class AniadirVaca : AppCompatActivity() {
         txtFechaNacimiento.keyListener = null
         //FIN PARA FECHAS
 
-        val listaColores = ColoresUbicaciones.colores
-        val listaUbicaciones = ColoresUbicaciones.ubicaciones
-        val listaSexos = ColoresUbicaciones.sexos
+        val listaColores = EstructurasColecciones.colores
+        val listaUbicaciones = EstructurasColecciones.ubicaciones
+        val listaSexos = EstructurasColecciones.sexos
 
 
 
