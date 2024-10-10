@@ -16,4 +16,7 @@
     <string name="sanitacion">Sanitación</string>
     <string name="observacion">Observación...</string>
     <string name="buscar_control_por_fecha">Buscar control por fecha</string>
+    <string name="sincronizar">Sincronizar</string>
+    <string name="ganado">Ganado</string>
+    <string name="asistencia">Asistencia</string>
 </resources>
