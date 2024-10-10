@@ -34,104 +34,108 @@
                     android:background="@drawable/border_nombre_vaca"
                     android:paddingStart="15dp"
                     android:paddingTop="9dp"
-                    android:layout_marginBottom="30dp"
-                    android:textColor="@color/white"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry"/>
+                    android:layout_marginBottom="8dp"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            tools:ignore="RtlSymmetry"/>
 
             <TextView
                     android:id="@+id/txtFechaNacimiento"
-                    android:layout_marginBottom="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border_button_sin_color"
                     android:paddingStart="15dp"
                     android:paddingTop="9dp"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
+                    android:layout_marginBottom="8dp"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
 
             <TextView
                     android:id="@+id/txtNroCaravana"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="30dp"
                     android:background="@drawable/border_button_sin_color"
                     android:paddingStart="15dp"
                     android:paddingTop="9dp"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
+                    android:layout_marginBottom="8dp"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
 
             <TextView
                     android:id="@+id/SnnUbicacion"
-                    android:layout_marginBottom="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border_button_sin_color"
                     android:paddingStart="15dp"
                     android:paddingTop="9dp"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
+                    android:layout_marginBottom="8dp"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
 
             <TextView
                     android:id="@+id/SnnColor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="30dp"
                     android:background="@drawable/border_button_sin_color"
                     android:paddingStart="15dp"
                     android:paddingTop="9dp"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
+                    android:layout_marginBottom="8dp"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
             <TextView
                     android:id="@+id/SnnSexo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="30dp"
                     android:background="@drawable/border_button_sin_color"
                     android:paddingStart="15dp"
                     android:paddingTop="9dp"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
+                    android:layout_marginBottom="8dp"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
             <TextView
                     android:id="@+id/TxtPeso"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="30dp"
                     android:background="@drawable/border_button_sin_color"
                     android:paddingStart="15dp"
                     android:paddingTop="9dp"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    android:textStyle="bold"/>
+                    android:layout_marginBottom="8dp"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
 
-               <Button
-                       android:id="@+id/btnAgregarControl"
-                       android:layout_width="match_parent"
-                       android:layout_height="match_parent"
-                       android:layout_weight="3"
-                       android:background="@drawable/btn_azul"
-                       android:text="@string/agregar_control"
-                       android:textColor="@color/black"
-                       android:textSize="25sp"
-                       android:textStyle="bold"
-                       android:minHeight="45dp"/>
-               <Button
-                       android:id="@+id/btnVerControl"
-                       android:layout_width="match_parent"
-                       android:layout_height="match_parent"
-                       android:layout_weight="3"
-                       android:background="@drawable/btn_verde"
-                       android:text="@string/ver_control"
-                       android:textColor="@color/black"
-                       android:textSize="25sp"
-                       android:textStyle="bold"
-                       android:minHeight="45dp"/>
+            <Button
+                    android:id="@+id/btnAgregarControl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@drawable/rounded_button"
+            android:text="@string/agregar_control"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:minHeight="45dp"
+            android:layout_marginBottom="8dp"/>
+
+            <Button
+                    android:id="@+id/btnVerControl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@drawable/rounded_button"
+            android:text="@string/ver_control"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:minHeight="45dp"/>
 
         </LinearLayout>
         </ScrollView>
@@ -155,7 +159,7 @@
             android:layout_height="67dp"
             android:layout_weight="1"
             android:layout_marginStart="8dp"
-            android:background="@drawable/btn_verde"
+            android:background="@drawable/rounded_button"
             android:text="@string/editar"
             android:textColor="@color/black"
             android:textSize="25sp"
@@ -166,7 +170,7 @@
                 android:layout_height="67dp"
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
-                android:background="@drawable/btn_rojo"
+                android:background="@drawable/rounded_button"
                 android:text="@string/eliminar"
                 android:textColor="@color/black"
                 android:textSize="25sp"
