@@ -14,7 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asistenciadevacas.ListaDeVacasAsistidas.Companion.nuevasVacas
 import com.example.asistenciadevacas.ListaDeVacasAsistidas.Companion.nuevoVacaAdapter
-
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.io.PrintWriter
+import java.net.InetAddress
+import java.net.Socket
 class ListaDeVacas : AppCompatActivity() {
 
     companion object {
@@ -27,6 +31,7 @@ class ListaDeVacas : AppCompatActivity() {
         const val pageSize = 10 // Número de vacas por página
         val REQUEST_CODE_ADD_VACA = 1
     }
+    private lateinit var etBuscarVaca: EditText
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,5 +106,38 @@ class ListaDeVacas : AppCompatActivity() {
         }
 
         isLoading = false
+    }
+
+    private fun connectToESP8266() {
+        val ipAddress = "192.168.4.1" // IP del ESP8266 como punto de acceso
+        val port = 80 // Puerto configurado en el ESP8266
+
+        try {
+            // Establecer conexión con el ESP8266
+            val serverAddr = InetAddress.getByName(ipAddress)
+            val socket = Socket(serverAddr, port)
+
+            // Enviar una solicitud GET (o cualquier comando)
+            val output = PrintWriter(socket.getOutputStream(), true)
+            output.println("GET / HTTP/1.1")
+            output.flush()
+
+            // Leer la respuesta del ESP8266
+            val input = BufferedReader(InputStreamReader(socket.getInputStream()))
+            val response = input.readLine()
+
+            // Mostrar la respuesta en el TextView o en el EditText
+            runOnUiThread {
+                etBuscarVaca.setText(response)
+            }
+
+            // Cerrar el socket
+            socket.close()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            runOnUiThread {
+                etBuscarVaca.setText("Error: ${e.message}")
+            }
+        }
     }
 }
